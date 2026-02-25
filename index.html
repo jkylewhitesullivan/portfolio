@@ -29,14 +29,98 @@
       min-height: 100vh;
       margin: 0;
       display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      padding: 0 12px 24px;
+    }
+
+    .top-banner {
+      background: #ffffff;
+      color: #111827;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+    }
+
+    .top-banner-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 12px 8px 10px;
+      display: flex;
       align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .top-left-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .top-menu {
+      display: inline-flex;
+      flex-direction: column;
       justify-content: center;
-      padding: 24px 12px;
+      gap: 4px;
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .top-menu span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: #111827;
+    }
+
+    .top-logo-link {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .top-logo-img {
+      display: block;
+      height: 26px;
+      width: auto;
+    }
+
+    .top-donate-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #dc2626;
+    }
+
+    .top-donate-icon {
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    .top-donate-text {
+      color: #111827;
+    }
+
+    .top-banner-accent {
+      height: 4px;
+      background: var(--yellow);
     }
 
     .page-shell {
       width: 100%;
       max-width: 480px;
+      margin: 24px auto 0;
       background: var(--yellow);
       border-radius: 32px;
       box-shadow: 0 14px 35px rgba(15, 23, 42, 0.35);
@@ -737,6 +821,30 @@
   </style>
 </head>
 <body>
+  <header class="top-banner">
+    <div class="top-banner-inner">
+      <div class="top-left-group">
+        <button class="top-menu" type="button" aria-label="Open navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <a href="https://www.wbur.org/" class="top-logo-link">
+          <img
+            src="https://img.paperform.co/fetch/w_800,f_auto/https://s3.amazonaws.com/pf-upload-01/u-87241/1/2021-06-07/vf23par/logo3.png"
+            alt="WBUR"
+            class="top-logo-img"
+          />
+        </a>
+      </div>
+      <a href="https://donate.wbur.org" class="top-donate-link">
+        <span class="top-donate-icon" aria-hidden="true">♥</span>
+        <span class="top-donate-text">Donate</span>
+      </a>
+    </div>
+    <div class="top-banner-accent"></div>
+  </header>
+
   <main class="page-shell">
     <header class="page-header">
       <div class="brand">
