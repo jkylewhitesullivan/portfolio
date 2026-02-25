@@ -1,10 +1,7 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
+<html lang="en"><head>
+  <meta charset="UTF-8">
   <title>Account • StreamCast</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     :root {
       --yellow: #ffd600;
@@ -233,6 +230,47 @@
       box-shadow: 0 6px 12px rgba(15, 23, 42, 0.08);
     }
 
+    .member-card {
+      background: var(--surface);
+      color: var(--text);
+      padding: 18px 18px 20px;
+      text-align: left;
+    }
+
+    .member-name {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.5rem;
+      line-height: 1.2;
+      margin-bottom: 14px;
+      color: #111827;
+    }
+
+    .member-meta {
+      font-size: 0.86rem;
+      line-height: 1.5;
+      margin-bottom: 18px;
+      color: var(--text-muted);
+    }
+
+    .member-meta span {
+      display: block;
+    }
+
+    .member-details-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 16px;
+      font-size: 0.86rem;
+      font-weight: 600;
+      border-radius: 999px;
+      border: none;
+      background: #ffffff;
+      color: #111827;
+      cursor: pointer;
+      box-shadow: 0 6px 12px rgba(15, 23, 42, 0.35);
+    }
+
     .card-header {
       display: flex;
       align-items: center;
@@ -347,7 +385,7 @@
     }
 
     .profile-meta span strong {
-      color: #e5e7eb;
+      color: #111827;
       font-weight: 500;
     }
 
@@ -653,7 +691,7 @@
     }
 
     .history-meta span strong {
-      color: #e5e7eb;
+      color: #111827;
       font-weight: 500;
     }
 
@@ -713,6 +751,8 @@
       gap: 4px;
       transition: background 0.12s ease;
       color: #111827;
+      width: 100%;
+      text-align: left;
     }
 
     .nav-card.games,
@@ -781,7 +821,7 @@
     }
 
     .secondary-row strong {
-      color: #e5e7eb;
+      color: #111827;
       font-weight: 500;
     }
 
@@ -801,9 +841,9 @@
     }
 
     .micro-tag.highlight {
-      border-color: rgba(129, 140, 248, 0.9);
-      background: radial-gradient(circle at 0 0, rgba(129, 140, 248, 0.32), transparent 60%);
-      color: #e0e7ff;
+      border-color: #f59e0b;
+      background: #fef3c7;
+      color: #92400e;
     }
 
     .footer-note {
@@ -830,11 +870,7 @@
           <span></span>
         </button>
         <a href="https://www.wbur.org/" class="top-logo-link">
-          <img
-            src="https://img.paperform.co/fetch/w_800,f_auto/https://s3.amazonaws.com/pf-upload-01/u-87241/1/2021-06-07/vf23par/logo3.png"
-            alt="WBUR"
-            class="top-logo-img"
-          />
+          <img src="https://img.paperform.co/fetch/w_800,f_auto/https://s3.amazonaws.com/pf-upload-01/u-87241/1/2021-06-07/vf23par/logo3.png" alt="WBUR" class="top-logo-img">
         </a>
       </div>
       <a href="https://donate.wbur.org" class="top-donate-link">
@@ -846,59 +882,18 @@
   </header>
 
   <main class="page-shell">
-    <header class="page-header">
-      <div class="brand">
-        <div class="avatar-main header-avatar" aria-hidden="true">
-          <span>JW</span>
-        </div>
-        <div class="brand-text">
-          <span class="brand-greeting">Hi, Jordan White</span>
-          <button type="button" class="logout-link">Log out</button>
-        </div>
-      </div>
-      <div class="page-actions">
-        <button class="icon-circle" type="button" aria-label="Close account panel">✕</button>
-      </div>
-    </header>
-
     <section class="account-layout">
       <!-- Left column: profile, rank, history -->
       <div class="left-col">
-        <!-- Profile card -->
-        <section class="card" aria-label="User profile summary">
-          <div class="card-header">
-            <div>
-              <div class="card-title">Account</div>
-              <div class="card-subtitle">Personal profile & listener snapshot</div>
-            </div>
+        <!-- Member summary card -->
+        <section class="card member-card" aria-label="Member summary">
+          <h1 class="member-name">James Kyle White-Sullivan</h1>
+          <div class="member-meta">
+            <span>Member #: 94286525</span>
+            <span>Member since: 3/3/25</span>
+            <span>Expiration date: 3/31/26</span>
           </div>
-
-          <div class="profile-header">
-            <div class="avatar-stack" aria-hidden="true">
-              <div class="avatar-main">
-                <span>JW</span>
-              </div>
-              <div class="avatar-ring"></div>
-              <div class="avatar-status"></div>
-            </div>
-            <div class="profile-main">
-              <div class="profile-name-row">
-                <div class="profile-name">Jordan White</div>
-                <span class="tag">Night Owl Listener</span>
-              </div>
-              <div class="profile-meta">
-                <span><strong>@jwavelength</strong></span>
-                <span class="bullet"></span>
-                <span>Joined Jun 2021</span>
-                <span class="bullet"></span>
-                <span>Preferred genres: Tech, Comedy, True Crime</span>
-              </div>
-              <p class="profile-bio">
-                Deep-dive podcast junkie. Most active on late-night live shows and long-form
-                interviews.
-              </p>
-            </div>
-          </div>
+          <button type="button" class="member-details-button">My Member Details</button>
         </section>
 
         <!-- Listener stats (total time + rank) -->
@@ -906,7 +901,7 @@
           <div class="card-header">
             <div>
               <div class="card-title">Listener Stats</div>
-              <div class="card-subtitle">Time spent listening & your rank</div>
+              <div class="card-subtitle">Time spent listening &amp; your rank</div>
             </div>
             <span class="pro-pill">Pro Listener</span>
           </div>
@@ -925,12 +920,57 @@
           </div>
         </section>
 
+        <!-- Quick access moved up below Listener stats -->
+        <section class="card" aria-label="Quick access">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Quick Access</div>
+              <div class="card-subtitle">Jump to your saved content</div>
+            </div>
+          </div>
+
+          <div class="nav-grid">
+            <!-- Downloads -->
+            <button class="nav-card" type="button" aria-label="Go to Downloads">
+              <div class="nav-label-row">
+                <div>
+                  <div class="nav-title">Downloads</div>
+                  <div class="nav-metric-sub">Saved episodes</div>
+                </div>
+                <div class="nav-metric-main">12</div>
+              </div>
+            </button>
+
+            <!-- Games -->
+            <button class="nav-card games" type="button" aria-label="Go to Games &amp; listener streaks">
+              <div class="nav-label-row">
+                <div>
+                  <div class="nav-title">Games</div>
+                  <div class="nav-metric-sub">Days played</div>
+                </div>
+                <div class="nav-metric-main">42</div>
+              </div>
+            </button>
+
+            <!-- Events -->
+            <button class="nav-card events" type="button" aria-label="Go to Events">
+              <div class="nav-label-row">
+                <div>
+                  <div class="nav-title">Events</div>
+                  <div class="nav-metric-sub">Upcoming</div>
+                </div>
+                <div class="nav-metric-main">5</div>
+              </div>
+            </button>
+          </div>
+        </section>
+
         <!-- Listening history -->
         <section class="card" aria-label="Recent listening history">
           <div class="card-header">
             <div>
               <div class="card-title">Listening History</div>
-              <div class="card-subtitle">Last 24 hours across podcasts & live</div>
+              <div class="card-subtitle">Last 24 hours across podcasts &amp; live</div>
             </div>
           </div>
 
@@ -956,9 +996,9 @@
             <li class="history-item">
               <div class="history-type live" aria-hidden="true">🔴</div>
               <div class="history-main">
-                <div class="history-title">Night Shift Sessions · Open Q&A</div>
+                <div class="history-title">Night Shift Sessions · Open Q&amp;A</div>
                 <div class="history-meta">
-                  <span>Live with Casey & Priya</span>
+                  <span>Live with Casey &amp; Priya</span>
                   <span class="dot-divider"></span>
                   <span><strong>1h 21m</strong> watched</span>
                   <span class="dot-divider"></span>
@@ -1028,67 +1068,16 @@
         </section>
       </div>
 
-      <!-- Right column: navigation to Downloads, Games, Events -->
+      <!-- Right column: account notes -->
       <div class="right-col">
-        <section class="card" aria-label="Quick access">
-          <div class="card-header">
-            <div>
-              <div class="card-title">Quick Access</div>
-              <div class="card-subtitle">Jump to your saved content</div>
-            </div>
-          </div>
-
-          <div class="nav-grid">
-            <!-- Downloads -->
-            <button class="nav-card" type="button" aria-label="Go to Downloads">
-              <div class="nav-label-row">
-                <div>
-                  <div class="nav-title">Downloads</div>
-                  <div class="nav-metric-sub">Saved episodes</div>
-                </div>
-                <div class="nav-metric-main">12</div>
-              </div>
-            </button>
-
-            <!-- Games -->
-            <button class="nav-card games" type="button" aria-label="Go to Games & listener streaks">
-              <div class="nav-label-row">
-                <div>
-                  <div class="nav-title">Games</div>
-                  <div class="nav-metric-sub">Days played</div>
-                </div>
-                <div class="nav-metric-main">42</div>
-              </div>
-            </button>
-
-            <!-- Events -->
-            <button class="nav-card events" type="button" aria-label="Go to Events">
-              <div class="nav-label-row">
-                <div>
-                  <div class="nav-title">Events</div>
-                  <div class="nav-metric-sub">Upcoming</div>
-                </div>
-                <div class="nav-metric-main">5</div>
-              </div>
-            </button>
-          </div>
-        </section>
-
         <section class="card" aria-label="Account notes and controls">
           <div class="secondary-card">
             <div class="secondary-row">
               <span>Primary email: <strong>jordan.white@example.com</strong></span>
-              <span class="bullet"></span>
-              <span>Region: <strong>US · Eastern</strong></span>
-            </div>
-            <div class="secondary-row">
-              <span>Subscription: <strong>StreamCast Plus · Annual</strong></span>
-              <span class="bullet"></span>
-              <span>Renews in 23 days</span>
             </div>
             <div class="secondary-tags">
-              <span class="micro-tag highlight">Ad-free listening</span>
-              <span class="micro-tag">Early access drops</span>
+              <span class="micro-tag highlight">Sponsor-free listening</span>
+              <span class="micro-tag">Early access to CitySpace</span>
               <span class="micro-tag">Priority event waitlist</span>
             </div>
             <p class="footer-note">
@@ -1100,6 +1089,7 @@
       </div>
     </section>
   </main>
-</body>
-</html>
 
+
+
+</body></html>
