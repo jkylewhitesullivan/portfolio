@@ -1,7 +1,10 @@
-<html lang="en"><head>
-  <meta charset="UTF-8">
-  <title>Account • StreamCast</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Account • Public Stream</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
       --yellow: #ffd600;
@@ -141,6 +144,37 @@
       body {
         padding: 16px 8px;
       }
+    }
+
+    .section-title {
+      padding: 16px 18px 10px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .section-title-main {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .section-title-underline {
+      margin-top: 10px;
+    }
+
+    .section-title-underline-primary {
+      height: 3px;
+      width: 96px;
+      border-radius: 999px;
+      background: var(--yellow);
+    }
+
+    .section-title-underline-secondary {
+      margin-top: 3px;
+      height: 1px;
+      width: 100%;
+      background: var(--border-subtle);
     }
 
     .page-header {
@@ -846,6 +880,48 @@
       color: #92400e;
     }
 
+    .bottom-nav {
+      margin-top: 10px;
+      padding: 8px 18px 10px;
+      background: #111827;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-top: 1px solid rgba(0, 0, 0, 0.6);
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+    }
+
+    .bottom-nav-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: none;
+      background: transparent;
+      color: #e5e7eb;
+      font-size: 0.78rem;
+      cursor: pointer;
+    }
+
+    .bottom-nav-item-active {
+      background: var(--yellow);
+      color: #111827;
+    }
+
+    .bottom-nav-icon {
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .bottom-nav-label {
+      font-size: 0.78rem;
+    }
+
     .footer-note {
       font-size: 0.7rem;
       color: var(--text-muted);
@@ -870,7 +946,11 @@
           <span></span>
         </button>
         <a href="https://www.wbur.org/" class="top-logo-link">
-          <img src="https://img.paperform.co/fetch/w_800,f_auto/https://s3.amazonaws.com/pf-upload-01/u-87241/1/2021-06-07/vf23par/logo3.png" alt="WBUR" class="top-logo-img">
+          <img
+            src="https://img.paperform.co/fetch/w_800,f_auto/https://s3.amazonaws.com/pf-upload-01/u-87241/1/2021-06-07/vf23par/logo3.png"
+            alt="WBUR"
+            class="top-logo-img"
+          />
         </a>
       </div>
       <a href="https://donate.wbur.org" class="top-donate-link">
@@ -882,12 +962,20 @@
   </header>
 
   <main class="page-shell">
+    <section class="section-title" aria-label="Page title">
+      <h1 class="section-title-main">My WBUR</h1>
+      <div class="section-title-underline">
+        <div class="section-title-underline-primary"></div>
+        <div class="section-title-underline-secondary"></div>
+      </div>
+    </section>
+
     <section class="account-layout">
       <!-- Left column: profile, rank, history -->
       <div class="left-col">
         <!-- Member summary card -->
         <section class="card member-card" aria-label="Member summary">
-          <h1 class="member-name">James Kyle White-Sullivan</h1>
+          <h2 class="member-name">James Kyle White-Sullivan</h2>
           <div class="member-meta">
             <span>Member #: 94286525</span>
             <span>Member since: 3/3/25</span>
@@ -901,7 +989,7 @@
           <div class="card-header">
             <div>
               <div class="card-title">Listener Stats</div>
-              <div class="card-subtitle">Time spent listening &amp; your rank</div>
+              <div class="card-subtitle">Time spent listening & your rank</div>
             </div>
             <span class="pro-pill">Pro Listener</span>
           </div>
@@ -942,7 +1030,7 @@
             </button>
 
             <!-- Games -->
-            <button class="nav-card games" type="button" aria-label="Go to Games &amp; listener streaks">
+            <button class="nav-card games" type="button" aria-label="Go to Games & listener streaks">
               <div class="nav-label-row">
                 <div>
                   <div class="nav-title">Games</div>
@@ -970,7 +1058,7 @@
           <div class="card-header">
             <div>
               <div class="card-title">Listening History</div>
-              <div class="card-subtitle">Last 24 hours across podcasts &amp; live</div>
+              <div class="card-subtitle">Last 24 hours across podcasts & live</div>
             </div>
           </div>
 
@@ -996,9 +1084,9 @@
             <li class="history-item">
               <div class="history-type live" aria-hidden="true">🔴</div>
               <div class="history-main">
-                <div class="history-title">Night Shift Sessions · Open Q&amp;A</div>
+                <div class="history-title">Night Shift Sessions · Open Q&A</div>
                 <div class="history-meta">
-                  <span>Live with Casey &amp; Priya</span>
+                  <span>Live with Casey & Priya</span>
                   <span class="dot-divider"></span>
                   <span><strong>1h 21m</strong> watched</span>
                   <span class="dot-divider"></span>
@@ -1073,11 +1161,11 @@
         <section class="card" aria-label="Account notes and controls">
           <div class="secondary-card">
             <div class="secondary-row">
-              <span>Primary email: <strong>jordan.white@example.com</strong></span>
+              <span>Primary email: <strong>jkwhite@example.com</strong></span>
             </div>
             <div class="secondary-tags">
-              <span class="micro-tag highlight">Sponsor-free listening</span>
-              <span class="micro-tag">Early access to CitySpace</span>
+              <span class="micro-tag highlight">Ad-free listening</span>
+              <span class="micro-tag">Early access drops</span>
               <span class="micro-tag">Priority event waitlist</span>
             </div>
             <p class="footer-note">
@@ -1088,8 +1176,22 @@
         </section>
       </div>
     </section>
+
+    <nav class="bottom-nav" aria-label="Primary navigation">
+      <button class="bottom-nav-item" type="button">
+        <span class="bottom-nav-icon" aria-hidden="true">🎧</span>
+        <span class="bottom-nav-label">Listen Now</span>
+      </button>
+      <button class="bottom-nav-item" type="button">
+        <span class="bottom-nav-icon" aria-hidden="true">▶</span>
+        <span class="bottom-nav-label">Podcasts + Shows</span>
+      </button>
+      <button class="bottom-nav-item bottom-nav-item-active" type="button">
+        <span class="bottom-nav-icon" aria-hidden="true">👤</span>
+        <span class="bottom-nav-label">My WBUR</span>
+      </button>
+    </nav>
   </main>
+</body>
+</html>
 
-
-
-</body></html>
