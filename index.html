@@ -1,10 +1,7 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Account • Public Stream</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <title>Account • StreamCast</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     :root {
       --yellow: #ffd600;
@@ -13,6 +10,7 @@
       --text: #111827;
       --text-muted: #4b5563;
       --border-subtle: #e5e7eb;
+      --brand-blue: #2563eb;
     }
 
     * {
@@ -265,44 +263,214 @@
     }
 
     .member-card {
-      background: var(--surface);
+      background: transparent;
       color: var(--text);
-      padding: 18px 18px 20px;
+      padding: 0;
       text-align: left;
+      border: none;
+      box-shadow: none;
     }
 
-    .member-name {
+    .membercard {
+      border-radius: 24px;
+      background: var(--yellow);
+      border: 1px solid rgba(17, 24, 39, 0.14);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.28);
+      padding: 20px 24px 18px;
+      position: relative;
+      overflow: hidden;
+      min-height: 190px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .membercard::after {
+      content: "";
+      position: absolute;
+      inset: -36% -6% auto auto;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.22), transparent 62%);
+      transform: rotate(10deg);
+      pointer-events: none;
+    }
+
+    .membercard-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .membercard-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .membercard-brand-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: #111827;
+      position: relative;
+      flex: 0 0 auto;
+    }
+
+    .membercard-brand-mark::after {
+      content: "";
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--yellow);
+      top: 7px;
+      left: 7px;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+    }
+
+    .membercard-brand-text {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.5rem;
-      line-height: 1.2;
-      margin-bottom: 14px;
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: #111827;
+      line-height: 1;
+    }
+
+    .membercard-status {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+      text-align: right;
+      flex: 0 0 auto;
+    }
+
+    .membercard-status-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(17, 24, 39, 0.7);
+    }
+
+    .membercard-status-value {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #111827;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(17, 24, 39, 0.12);
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.18);
+    }
+
+    .membercard-word {
+      margin-top: 20px;
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
+    }
+
+    .membercard-word-em {
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    .membercard-word-plain {
+      font-style: normal;
       color: #111827;
     }
 
-    .member-meta {
-      font-size: 0.86rem;
-      line-height: 1.5;
-      margin-bottom: 18px;
-      color: var(--text-muted);
+    .membercard-name {
+      margin-top: 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #111827;
+      line-height: 1.05;
     }
 
-    .member-meta span {
-      display: block;
+    .membercard-number {
+      margin-top: 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      color: rgba(17, 24, 39, 0.92);
+    }
+
+    .membercard-bottom {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      align-items: end;
+    }
+
+    .membercard-foot {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .membercard-foot.right {
+      text-align: right;
+    }
+
+    .membercard-foot-label {
+      font-size: 0.78rem;
+      color: rgba(17, 24, 39, 0.7);
+    }
+
+    .membercard-foot-value {
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      color: #111827;
+    }
+
+    .member-details-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .member-meta-inline {
+      font-size: 0.78rem;
+      color: rgba(17, 24, 39, 0.75);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .member-meta-inline strong {
+      color: #111827;
+      font-weight: 650;
     }
 
     .member-details-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 8px 16px;
-      font-size: 0.86rem;
-      font-weight: 600;
+      padding: 8px 14px;
+      font-size: 0.82rem;
+      font-weight: 700;
       border-radius: 999px;
-      border: none;
-      background: #ffffff;
+      border: 1px solid rgba(17, 24, 39, 0.18);
+      background: rgba(255, 255, 255, 0.85);
       color: #111827;
       cursor: pointer;
-      box-shadow: 0 6px 12px rgba(15, 23, 42, 0.35);
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.22);
     }
 
     .card-header {
@@ -929,6 +1097,89 @@
       margin-top: 2px;
     }
 
+    /* Membership resources */
+    .resource-list {
+      display: flex;
+      flex-direction: column;
+      margin-top: 6px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .resource-link {
+      text-decoration: none;
+      color: var(--text);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 12px 12px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .resource-link:last-child {
+      border-bottom: none;
+    }
+
+    .resource-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(37, 99, 235, 0.35);
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--brand-blue);
+      font-size: 1.05rem;
+      flex: 0 0 auto;
+    }
+
+    .resource-content {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
+    }
+
+    .resource-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .resource-desc {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      line-height: 1.2;
+    }
+
+    .resource-arrow {
+      color: rgba(17, 24, 39, 0.65);
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    .resource-mini-links {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .resource-mini-links a {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(75, 85, 99, 0.45);
+      padding-bottom: 1px;
+    }
+
     @media (max-width: 900px) {
       .page-header {
         padding: 18px 16px 10px;
@@ -946,11 +1197,7 @@
           <span></span>
         </button>
         <a href="https://www.wbur.org/" class="top-logo-link">
-          <img
-            src="https://img.paperform.co/fetch/w_800,f_auto/https://s3.amazonaws.com/pf-upload-01/u-87241/1/2021-06-07/vf23par/logo3.png"
-            alt="WBUR"
-            class="top-logo-img"
-          />
+          <img src="https://img.paperform.co/fetch/w_800,f_auto/https://s3.amazonaws.com/pf-upload-01/u-87241/1/2021-06-07/vf23par/logo3.png" alt="WBUR" class="top-logo-img">
         </a>
       </div>
       <a href="https://donate.wbur.org" class="top-donate-link">
@@ -975,40 +1222,40 @@
       <div class="left-col">
         <!-- Member summary card -->
         <section class="card member-card" aria-label="Member summary">
-          <h2 class="member-name">James Kyle White-Sullivan</h2>
-          <div class="member-meta">
-            <span>Member #: 94286525</span>
-            <span>Member since: 3/3/25</span>
-            <span>Expiration date: 3/31/26</span>
+          <div class="membercard" aria-label="WBUR member card">
+            <div class="membercard-top">
+              <div class="membercard-brand" aria-label="WBUR">
+                <span class="membercard-brand-mark" aria-hidden="true"></span>
+                <span class="membercard-brand-text">wbur</span>
+              </div>
+              <div class="membercard-status">
+                <div class="membercard-status-label">Membership status</div>
+                <div class="membercard-status-value">Sustainer</div>
+              </div>
+            </div>
+
+            <div class="membercard-word">
+              <span class="membercard-word-em">member</span><span class="membercard-word-plain">card</span>
+            </div>
+            <div class="membercard-name">James Kyle White-Sullivan</div>
+            <div class="membercard-number">1-94286525</div>
+
+            <div class="membercard-bottom">
+              <div class="membercard-foot">
+                <div class="membercard-foot-label">Supporting Boston’s NPR since:</div>
+                <div class="membercard-foot-value">2025</div>
+              </div>
+              <div class="membercard-foot right">
+                <div class="membercard-foot-label">Valid through:</div>
+                <div class="membercard-foot-value">3/31/2026</div>
+              </div>
+            </div>
           </div>
-          <button type="button" class="member-details-button">My Member Details</button>
+
+          
         </section>
 
-        <!-- Listener stats (total time + rank) -->
-        <section class="card stats-card" aria-label="Listener stats">
-          <div class="card-header">
-            <div>
-              <div class="card-title">Listener Stats</div>
-              <div class="card-subtitle">Time spent listening & your rank</div>
-            </div>
-            <span class="pro-pill">Loyal Listener</span>
-          </div>
-
-          <div class="simple-stats">
-            <div class="simple-stat-box" aria-label="Total listening time">
-              <div class="simple-stat-label">Total Listening Time</div>
-              <div class="simple-stat-main">76h 7m</div>
-              <div class="simple-stat-sub">4,567 minutes</div>
-            </div>
-            <div class="simple-stat-box" aria-label="Listener rank">
-              <div class="simple-stat-label">Your Rank</div>
-              <div class="simple-stat-main">#47</div>
-              <div class="simple-stat-sub">Among all listeners</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Quick access moved up below Listener stats -->
+        <!-- Quick access -->
         <section class="card" aria-label="Quick access">
           <div class="card-header">
             <div>
@@ -1018,6 +1265,17 @@
           </div>
 
           <div class="nav-grid">
+            <!-- Newsletters -->
+            <button class="nav-card" type="button" aria-label="Go to Newsletters">
+              <div class="nav-label-row">
+                <div>
+                  <div class="nav-title">Newsletters</div>
+                  <div class="nav-metric-sub">Subscriptions</div>
+                </div>
+                <div class="nav-metric-main">3</div>
+              </div>
+            </button>
+
             <!-- Downloads -->
             <button class="nav-card" type="button" aria-label="Go to Downloads">
               <div class="nav-label-row">
@@ -1030,7 +1288,7 @@
             </button>
 
             <!-- Games -->
-            <button class="nav-card games" type="button" aria-label="Go to Games & listener streaks">
+            <button class="nav-card games" type="button" aria-label="Go to Games &amp; listener streaks">
               <div class="nav-label-row">
                 <div>
                   <div class="nav-title">Games</div>
@@ -1058,7 +1316,7 @@
           <div class="card-header">
             <div>
               <div class="card-title">Listening History</div>
-              <div class="card-subtitle">Last 24 hours across podcasts & live</div>
+              <div class="card-subtitle">Last 24 hours across podcasts &amp; live</div>
             </div>
           </div>
 
@@ -1084,9 +1342,9 @@
             <li class="history-item">
               <div class="history-type live" aria-hidden="true">🔴</div>
               <div class="history-main">
-                <div class="history-title">Night Shift Sessions · Open Q&A</div>
+                <div class="history-title">Night Shift Sessions · Open Q&amp;A</div>
                 <div class="history-meta">
-                  <span>Live with Casey & Priya</span>
+                  <span>Live with Casey &amp; Priya</span>
                   <span class="dot-divider"></span>
                   <span><strong>1h 21m</strong> watched</span>
                   <span class="dot-divider"></span>
@@ -1154,18 +1412,108 @@
             </li>
           </ul>
         </section>
+
+        <!-- Listener stats (moved below Listening History) -->
+        <section class="card stats-card" aria-label="Listener stats">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Listener Stats</div>
+              <div class="card-subtitle">Time spent listening &amp; your rank</div>
+            </div>
+            <span class="pro-pill">Pro Listener</span>
+          </div>
+
+          <div class="simple-stats">
+            <div class="simple-stat-box" aria-label="Total listening time">
+              <div class="simple-stat-label">Total Listening Time</div>
+              <div class="simple-stat-main">76h 7m</div>
+              <div class="simple-stat-sub">4,567 minutes</div>
+            </div>
+            <div class="simple-stat-box" aria-label="Listener rank">
+              <div class="simple-stat-label">Your Rank</div>
+              <div class="simple-stat-main">#47</div>
+              <div class="simple-stat-sub">Among all listeners</div>
+            </div>
+          </div>
+        </section>
       </div>
 
       <!-- Right column: account notes -->
       <div class="right-col">
+        <section class="card" aria-label="Membership resources">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Membership resources</div>
+              <div class="card-subtitle">Join, renew, or explore giving options</div>
+            </div>
+          </div>
+
+          <div class="resource-list" role="list">
+            <a class="resource-link" role="listitem" href="https://www.wbur.org/membership/605748/members" target="_blank" rel="noopener noreferrer" aria-label="Members — join or renew here">
+              <span class="resource-icon" aria-hidden="true">👤</span>
+              <span class="resource-content">
+                <span class="resource-title">Members — join or renew</span>
+                <span class="resource-desc">
+                  Join today or renew your WBUR membership.
+                </span>
+              </span>
+              <span class="resource-arrow" aria-hidden="true">›</span>
+            </a>
+
+            <a class="resource-link" role="listitem" href="https://www.wbur.org/membership/701485/sustainer-central" target="_blank" rel="noopener noreferrer" aria-label="Sustainers — join or update your information here">
+              <span class="resource-icon" aria-hidden="true">🎁</span>
+              <span class="resource-content">
+                <span class="resource-title">Sustainers — update info</span>
+                <span class="resource-desc">
+                  Start or manage an automatic monthly gift.
+                </span>
+              </span>
+              <span class="resource-arrow" aria-hidden="true">›</span>
+            </a>
+
+            <a class="resource-link" role="listitem" href="https://www.wbur.org/membership/605906/murrow-society" target="_blank" rel="noopener noreferrer" aria-label="Edward R. Murrow Society Donors">
+              <span class="resource-icon" aria-hidden="true">♡</span>
+              <span class="resource-content">
+                <span class="resource-title">Edward R. Murrow Society</span>
+                <span class="resource-desc">
+                  Explore leadership giving levels and benefits.
+                </span>
+              </span>
+              <span class="resource-arrow" aria-hidden="true">›</span>
+            </a>
+
+            <a class="resource-link" role="listitem" href="https://www.wbur.org/membership/605928/donate-your-car" target="_blank" rel="noopener noreferrer" aria-label="Donate your car">
+              <span class="resource-icon" aria-hidden="true">🚗</span>
+              <span class="resource-content">
+                <span class="resource-title">Donate your car</span>
+                <span class="resource-desc">
+                  Turn a vehicle into support for WBUR.
+                </span>
+              </span>
+              <span class="resource-arrow" aria-hidden="true">›</span>
+            </a>
+
+            <a class="resource-link" role="listitem" href="https://www.wbur.org/membership/1030344/corporate-membership" target="_blank" rel="noopener noreferrer" aria-label="Corporate membership">
+              <span class="resource-icon" aria-hidden="true">🏢</span>
+              <span class="resource-content">
+                <span class="resource-title">Corporate membership</span>
+                <span class="resource-desc">
+                  Connect your company with WBUR audiences.
+                </span>
+              </span>
+              <span class="resource-arrow" aria-hidden="true">›</span>
+            </a>
+          </div>
+        </section>
+
         <section class="card" aria-label="Account notes and controls">
           <div class="secondary-card">
             <div class="secondary-row">
-              <span>Primary email: <strong>jkwhite@example.com</strong></span>
+              <span>Primary email: <strong>jordan.white@example.com</strong></span>
             </div>
             <div class="secondary-tags">
-              <span class="micro-tag highlight">Sponsor-free listening</span>
-              <span class="micro-tag">Early CitySpace ticket drops</span>
+              <span class="micro-tag highlight">Ad-free listening</span>
+              <span class="micro-tag">Early access drops</span>
               <span class="micro-tag">Priority event waitlist</span>
             </div>
             <p class="footer-note">
@@ -1192,7 +1540,7 @@
       </button>
     </nav>
   </main>
-</body>
-</html>
 
 
+
+</body></html>
